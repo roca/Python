@@ -1,6 +1,6 @@
 # Base this docker container off the official golang docker image.
 # Docker containers inherit everything from their base.
-FROM python:latest
+FROM python:2.7
 
 RUN pip install numpy scipy matplotlib ipython jupyter pandas sympy nose
 RUN pip install -U scikit-learn
