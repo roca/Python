@@ -23,8 +23,8 @@ features_train, features_test, labels_train, labels_test = preprocess()
 
 #########################################################
 ### your code goes here ###
-features_train = features_train[:len(features_train)/100] 
-labels_train = labels_train[:len(labels_train)/100] 
+# features_train = features_train[:len(features_train)/100] 
+# labels_train = labels_train[:len(labels_train)/100] 
 
 from sklearn.svm import SVC
 clf = SVC(kernel="rbf",C=10000)
@@ -44,8 +44,11 @@ print(predicted[10])
 print(predicted[26])
 print(predicted[50])
 
-# There are over 1700 test events--how many are predicted to be in the “Chris” (1) class? (Use the RBF kernel, C=10000., and the full training set.)
-# Need to code a loop here
+sum = 0
+for i in range(0, len(predicted)):
+    if predicted[i] == 1:
+        sum = sum + 1
+print(sum)
 #########################################################
 
 
