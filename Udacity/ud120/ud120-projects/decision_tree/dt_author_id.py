@@ -11,13 +11,18 @@
 import sys
 from time import time
 sys.path.append("../tools/")
-from email_preprocess import preprocess
+sys.path.append("../../l2.19/")
+from class_vis import prettyPicture, output_image
+from prep_terrain_data import makeTerrainData
 
+import matplotlib.pyplot as plt
+import numpy as np
+import pylab as pl
 
 ### features_train and features_test are the features for the training
 ### and testing datasets, respectively
 ### labels_train and labels_test are the corresponding item labels
-features_train, features_test, labels_train, labels_test = preprocess()
+features_train, features_test, labels_train, labels_test = makeTerrainData()
 
 
 
@@ -39,6 +44,10 @@ from sklearn.metrics import accuracy_score
 accuracy = accuracy_score(predicted, labels_test)
 
 print(accuracy)
+
+### draw the decision boundary with the text points overlaid
+prettyPicture(clf, features_test, labels_test)
+output_image("test.png", "png", open("test.png", "rb").read())
 #########################################################
 
 
