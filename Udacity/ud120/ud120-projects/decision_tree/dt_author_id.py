@@ -11,27 +11,25 @@
 import sys
 from time import time
 sys.path.append("../tools/")
-sys.path.append("../../l2.19/")
+sys.path.append("../choose_your_own/")
 from class_vis import prettyPicture, output_image
-from prep_terrain_data import makeTerrainData
+from email_preprocess import preprocess
 
-import matplotlib.pyplot as plt
-import numpy as np
-import pylab as pl
+
 
 ### features_train and features_test are the features for the training
 ### and testing datasets, respectively
 ### labels_train and labels_test are the corresponding item labels
-features_train, features_test, labels_train, labels_test = makeTerrainData()
-
-
-
+features_train, features_test, labels_train, labels_test = preprocess()
 
 #########################################################
 ### your code goes here ###
+features_train = features_train[:len(features_train)/100] 
+labels_train = labels_train[:len(labels_train)/100] 
 
-from sklearn.tree import tree
-clf = tree.DecisionTreeClassifier()
+
+from sklearn import tree
+clf = tree.DecisionTreeClassifier(min_samples_split=40)
 t0 = time()
 clf.fit(features_train, labels_train)
 print "training time:", round(time()-t0, 3), "s"
@@ -45,9 +43,9 @@ accuracy = accuracy_score(predicted, labels_test)
 
 print(accuracy)
 
-### draw the decision boundary with the text points overlaid
-prettyPicture(clf, features_test, labels_test)
-output_image("test.png", "png", open("test.png", "rb").read())
-#########################################################
+# ### draw the decision boundary with the text points overlaid
+# prettyPicture(clf, features_test, labels_test)
+# output_image("test.png", "png", open("test.png", "rb").read())
+# #########################################################
 
 
