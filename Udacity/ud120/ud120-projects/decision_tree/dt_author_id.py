@@ -27,6 +27,10 @@ features_train, features_test, labels_train, labels_test = preprocess()
 features_train = features_train[:len(features_train)/100] 
 labels_train = labels_train[:len(labels_train)/100] 
 
+feature_length = len(features_train[0])
+
+print "Number of features:",  feature_length
+
 
 from sklearn import tree
 clf = tree.DecisionTreeClassifier(min_samples_split=40)
