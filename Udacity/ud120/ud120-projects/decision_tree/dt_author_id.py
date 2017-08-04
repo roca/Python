@@ -16,7 +16,6 @@ from class_vis import prettyPicture, output_image
 from email_preprocess import preprocess
 
 
-
 ### features_train and features_test are the features for the training
 ### and testing datasets, respectively
 ### labels_train and labels_test are the corresponding item labels
@@ -27,9 +26,9 @@ features_train, features_test, labels_train, labels_test = preprocess()
 features_train = features_train[:len(features_train)/100] 
 labels_train = labels_train[:len(labels_train)/100] 
 
-feature_length = len(features_train[0])
+feature_train_length = len(features_train[0])
 
-print "Number of features:",  feature_length
+print "Number of training features:",  feature_train_length
 
 
 from sklearn import tree
@@ -46,6 +45,7 @@ from sklearn.metrics import accuracy_score
 accuracy = accuracy_score(predicted, labels_test)
 
 print(accuracy)
+
 
 # ### draw the decision boundary with the text points overlaid
 # prettyPicture(clf, features_test, labels_test)
