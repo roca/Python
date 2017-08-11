@@ -10,5 +10,8 @@ services:
         - "3000:3000"
       volumes:
         - .:/var/Udacity/ud120
+        - /tmp/.X11-unix:/tmp/.X11-unix
       working_dir: /var/Udacity/ud120
+      environment:
+        - DISPLAY=$ip:0
  

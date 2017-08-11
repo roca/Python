@@ -11,6 +11,7 @@ RUN ln -s /usr/local/bin/python /usr/bin/python
 RUN mkdir -p /var/Udacity/ud120
 WORKDIR /var/Udacity/ud120
 # Copy the example-app directory (where the Dockerfile lives) into the container.
-COPY . /var/Udacity/ud120
+#COPY . /var/Udacity/ud120
+ENV ip `$(ifconfig en1 | grep inet | awk '$1=="inet" {print $2}')`
 EXPOSE 3000
 ENTRYPOINT ["tail", "-f", "/dev/null"]
