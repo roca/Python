@@ -3,8 +3,31 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import pylab as pl
+from time import time
+from sklearn.metrics import accuracy_score
 
-def prettyPicture(clf, X_test, y_test):
+def fitAndPlot(clf, features_train, labels_train, features_test, labels_test, image_file_output_name):
+    print image_file_output_name, " output:"
+    t0 = time()
+    clf.fit(features_train, labels_train)
+    print "training time:", round(time()-t0, 3), "s"
+
+    t1 = time()
+    predicted = clf.predict(features_test) 
+    print "prediction time:", round(time()-t1, 3), "s"
+
+    accuracy = accuracy_score(predicted, labels_test)
+
+    print(image_file_output_name + " accuracy: " + str(accuracy))
+
+    print "\n"
+
+    try:
+        prettyPicture(clf, features_test, labels_test,image_file_output_name)
+    except NameError:
+        pass    
+
+def prettyPicture(clf, X_test, y_test,image_file_output_name):
     x_min = 0.0; x_max = 1.0
     y_min = 0.0; y_max = 1.0
     
@@ -33,7 +56,7 @@ def prettyPicture(clf, X_test, y_test):
     plt.xlabel("bumpiness")
     plt.ylabel("grade")
 
-    plt.savefig("test.png")
+    plt.savefig(image_file_output_name + ".png")
 
 import base64
 import json
