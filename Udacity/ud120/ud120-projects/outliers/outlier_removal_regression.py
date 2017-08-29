@@ -35,10 +35,11 @@ ages_train, ages_test, net_worths_train, net_worths_test = train_test_split(ages
 
 reg = linearReg(ages_train, net_worths_train)
 
-target_pred = reg.predict(ages_test)
+target_test_pred = reg.predict(ages_test)
+target_train_pred = reg.predict(ages_train)
 
-outlierCleaner(target_pred, ages, net_worths)
-print "r squared score using testing data", r2_score(net_worths_test, target_pred)
+outlierCleaner(target_train_pred, ages, net_worths)
+print "r squared score using testing data", r2_score(net_worths_test, target_test_pred)
 
 
 

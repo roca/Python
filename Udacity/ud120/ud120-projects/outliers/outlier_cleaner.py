@@ -11,7 +11,8 @@ def outlierCleaner(predictions, ages, net_worths):
         each tuple is of the form (age, net_worth, error).
     """
     for index in range(len(ages)):
-       print 'Ages, NetWorth: ', index, ages[index], ",", net_worths[index]
+        error = 100.0 * math.abs((net_worths[index] - predictions[index])) / net_worths[index]
+        print 'Ages, NetWorthActual NetWorthPredicted Error: ', index, ages[index], ",", net_worths[index], ",", predictions[index], ",", error
     
     cleaned_data = []
 
