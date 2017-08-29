@@ -1,5 +1,7 @@
 #!/usr/bin/python
 
+import math 
+
 
 def outlierCleaner(predictions, ages, net_worths):
     """
@@ -12,7 +14,7 @@ def outlierCleaner(predictions, ages, net_worths):
     """
     cleaned_data = []
     for index in range(len(ages)):
-        error = 100.0 * math.abs((net_worths[index] - predictions[index])) / net_worths[index]
+        error = math.pow((net_worths[index] - predictions[index]), 2.0)
         print 'Ages, NetWorthActual NetWorthPredicted Error: ', index, ages[index], ",", net_worths[index], ",", predictions[index], ",", error
         cleaned_data.append((ages[index], net_worths[index], error))
 
