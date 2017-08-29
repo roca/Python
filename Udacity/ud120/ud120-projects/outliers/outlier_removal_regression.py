@@ -36,6 +36,8 @@ ages_train, ages_test, net_worths_train, net_worths_test = train_test_split(ages
 reg = linearReg(ages_train, net_worths_train)
 
 target_pred = reg.predict(ages_test)
+
+outlierCleaner(target_pred, ages, net_worths)
 print "r squared score using testing data", r2_score(net_worths_test, target_pred)
 
 
