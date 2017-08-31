@@ -9,6 +9,7 @@ from feature_format import featureFormat, targetFeatureSplit
 
 ### read in data dictionary, convert to numpy array
 data_dict = pickle.load( open("../final_project/final_project_dataset.pkl", "r") )
+data_dict.pop( "TOTAL", 0 )
 features = ["salary", "bonus"]
 data = featureFormat(data_dict, features)
 
@@ -16,7 +17,7 @@ data = featureFormat(data_dict, features)
 ### your code below
 sorted_data = sorted(data, key=lambda tuple: tuple[1])
 
-sorted_data = sorted_data[:len(sorted_data)-1]
+#sorted_data = sorted_data[:len(sorted_data)-1]
 for point in sorted_data:
     salary = point[0]
     bonus = point[1]
