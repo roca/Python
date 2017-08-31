@@ -14,11 +14,16 @@ data = featureFormat(data_dict, features)
 
 
 ### your code below
+sorted_data = sorted(data, key=lambda tuple: tuple[1])
 
-for point in data:
+sorted_data = sorted_data[:len(sorted_data)-1]
+for point in sorted_data:
     salary = point[0]
     bonus = point[1]
-    print "bonuses",point[1]
+    for key, value in data_dict.items():
+        if value['salary'] == salary and value['bonus'] == bonus:
+            print "Person ",point,key,value['bonus']
+    
     matplotlib.pyplot.scatter( salary, bonus )
 
 matplotlib.pyplot.xlabel("salary")
