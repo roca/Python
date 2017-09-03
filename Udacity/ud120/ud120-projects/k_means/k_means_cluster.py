@@ -12,6 +12,7 @@ import numpy
 import matplotlib.pyplot as plt
 import sys
 sys.path.append("../tools/")
+from sklearn.cluster import KMeans
 from feature_format import featureFormat, targetFeatureSplit
 
 
@@ -64,7 +65,8 @@ plt.show()
 
 ### cluster here; create predictions of the cluster labels
 ### for the data and store them to a list called pred
-
+kmeans = KMeans(n_clusters=2).fit(data)
+pred = kmeans.predict(data)
 
 
 
