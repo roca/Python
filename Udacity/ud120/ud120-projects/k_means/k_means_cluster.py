@@ -56,15 +56,21 @@ poi, finance_features = targetFeatureSplit( data )
 
 ### your code below
 sorted_data = sorted(data, key=lambda tuple: tuple[2])
+a1 = []
+for key, value in data_dict.items():
+    # print value['exercised_stock_options']
+    a1.append(value['salary'])
+
+print sorted(a1)
 
 #sorted_data = sorted_data[:len(sorted_data)-1]
 for point in sorted_data:
     salary = point[1]
     exercised_stock_options = point[2]
     total_payments = point[3]
-    for key, value in data_dict.items():
-        if value['salary'] == salary  and value['exercised_stock_options'] == exercised_stock_options and value['total_payments'] == total_payments:
-            print "Person ",point,key,value['exercised_stock_options']
+    # for key, value in data_dict.items():
+    #     if value['salary'] == salary  and value['exercised_stock_options'] == exercised_stock_options and value['total_payments'] == total_payments:
+    #         print point,key,value['exercised_stock_options']
  
 
 
