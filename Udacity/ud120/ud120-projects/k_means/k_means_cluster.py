@@ -57,11 +57,14 @@ poi, finance_features = targetFeatureSplit( data )
 ### your code below
 sorted_data = sorted(data, key=lambda tuple: tuple[2])
 a1 = []
+a2 = []
 for key, value in data_dict.items():
     # print value['exercised_stock_options']
     a1.append(value['salary'])
+    a2.append(value['exercised_stock_options'])
 
 print sorted(a1)
+print sorted(a2)
 
 #sorted_data = sorted_data[:len(sorted_data)-1]
 for point in sorted_data:
