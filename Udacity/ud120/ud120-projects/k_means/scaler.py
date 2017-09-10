@@ -26,4 +26,4 @@ print featureScaling(data_exercised_stock_options)
 from sklearn.preprocessing import MinMaxScaler
 scaler = MinMaxScaler()
 print(scaler.fit_transform([[477.0],[200000.0],[1111258.0]]))
-print(scaler.fit_transform([[3285],[1000000],[4348384]]))
+print(scaler.fit_transform([[3285.0],[1000000.0],[34348384.0]]))

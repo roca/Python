@@ -48,9 +48,9 @@ data_dict.pop("TOTAL", 0)
 ### can be any key in the person-level dictionary (salary, director_fees, etc.) 
 feature_1 = "salary"
 feature_2 = "exercised_stock_options"
-feature_3 = "total_payments"
+# feature_3 = "total_payments"
 poi  = "poi"
-features_list = [poi, feature_1, feature_2, feature_3]
+features_list = [poi, feature_1, feature_2]
 data = featureFormat(data_dict, features_list )
 poi, finance_features = targetFeatureSplit( data )
 
@@ -63,17 +63,18 @@ for key, value in data_dict.items():
     a1.append(value['salary'])
     a2.append(value['exercised_stock_options'])
 
-print sorted(a1)
-print sorted(a2)
+# print sorted(a1)
+# print sorted(a2)
 
 #sorted_data = sorted_data[:len(sorted_data)-1]
 for point in sorted_data:
     salary = point[1]
     exercised_stock_options = point[2]
-    total_payments = point[3]
-    # for key, value in data_dict.items():
-    #     if value['salary'] == salary  and value['exercised_stock_options'] == exercised_stock_options and value['total_payments'] == total_payments:
-    #         print point,key,value['exercised_stock_options']
+    #total_payments = point[3]
+    for key, value in data_dict.items():
+        #and value['total_payments'] == total_payments:
+        if value['salary'] == salary  and value['exercised_stock_options'] == exercised_stock_options:
+            print point,key,value['exercised_stock_options'], value['salary']
  
 
 
@@ -84,7 +85,7 @@ for point in sorted_data:
 ### you'll want to change this line to 
 ### for f1, f2, _ in finance_features:
 ### (as it's currently written, the line below assumes 2 features)
-for f1, f2, _ in finance_features:
+for f1, f2 in finance_features:
     plt.scatter( f1, f2 )
 plt.show()
 
