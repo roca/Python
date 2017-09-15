@@ -30,17 +30,16 @@ def parseOutText(f):
         ### project part 2: comment out the line below
         #words = text_string
 
-        words = string.join(string.split(text_string," "), " ")
+        a_words = []
+        for word in string.split(text_string," "):
+            a_words.append(SnowballStemmer("english").stem(word.strip()))
 
         ### split the text string into individual words, stem each word,
         ### and append the stemmed word to words (make sure there's a single
         ### space between each stemmed word)
-        
+        words = string.join(a_words," ")
 
-
-
-
-    return words
+    return words.replace("  "," ")
 
     
 
