@@ -90,3 +90,4 @@ vocabulary =vectorizer.get_feature_names()
 
 print len(vocabulary)
 
+print vocabulary[34597]
