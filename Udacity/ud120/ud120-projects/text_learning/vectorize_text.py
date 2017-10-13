@@ -58,9 +58,9 @@ for name, from_person in [("sara", from_sara), ("chris", from_chris)]:
         word_data.append(parsed_out_text_striped)
 
         ### append a 0 to from_data if email is from Sara, and 1 if email is from Chris
-        if from_person == 'Sara':
+        if name == 'sara':
             from_data.append(0)
-        if from_person == 'Chris':
+        if name == 'chris':
             from_data.append(1)
 
 

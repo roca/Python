@@ -13,6 +13,9 @@ authors_file = "../text_learning/your_email_authors.pkl"
 word_data = pickle.load( open(words_file, "r"))
 authors = pickle.load( open(authors_file, "r") )
 
+print len(word_data)
+print len(authors)
+
 
 
 ### test_size is the percentage of events assigned to the test set (the
@@ -39,5 +42,36 @@ labels_train   = labels_train[:150]
 
 ### your code goes here
 
+from sklearn import tree
+clf = tree.DecisionTreeClassifier(min_samples_split=40)
+clf.fit(features_train, labels_train)
+
+from sklearn.metrics import accuracy_score
+pred = clf.predict(features_test)
+print accuracy_score(pred, labels_test)
+
+
+importances = clf.feature_importances_
+import numpy as np
+indices = np.argsort(importances)[::-1]
+
+# Print the feature ranking
+print("Feature ranking:")
+
+print indices 
+
+feature_names = vectorizer.get_feature_names()
+for i in indices:
+    if importances[i] >= 0.2:
+        print i,importances[i],feature_names[i]
+
+# Plot the feature importances of the forest
+# plt.figure()
+# plt.title("Feature importances")
+# plt.bar(range(X.shape[1]), importances[indices],
+#        color="r", yerr=std[indices], align="center")
+# plt.xticks(range(X.shape[1]), indices)
+# plt.xlim([-1, X.shape[1]])
+# plt.show()
 
 
