@@ -23,6 +23,7 @@ features_list = ["poi", "salary"]
 
 data = featureFormat(data_dict, features_list)
 labels, features = targetFeatureSplit(data)
+#sort_keys = '../tools/python2_lesson14_keys.pkl'
 
 
 
@@ -41,11 +42,20 @@ print "training time:", round(time()-t0, 3), "s"
 t1 = time()
 predicted = clf.predict(features_test) 
 print "prediction time:", round(time()-t1, 3), "s"
+print "predicted ", predicted
+print "actual: ", labels_test
+
+x = []
+x[:len(features_test)] = [0] * len(features_test)
 
 from sklearn.metrics import accuracy_score
 accuracy = accuracy_score(predicted, labels_test)
 
 print(accuracy)
+
+for index, item in enumerate(predicted):
+    if item == features_test[index]:
+        print "y"
 
 
 
