@@ -53,9 +53,25 @@ accuracy = accuracy_score(predicted, labels_test)
 
 print(accuracy)
 
-for index, item in enumerate(predicted):
-    if item == features_test[index]:
-        print "y"
+# for index, item in enumerate(predicted):
+#     if item == features_test[index]:
+#         print "y"
+
+from sklearn.metrics import precision_score
+from sklearn.metrics import recall_score
+
+print "precision score: ", precision_score(labels_test,predicted, average='binary')
+print "recall score: ", recall_score(labels_test,predicted, average='binary')
+
+predictions = [0, 1, 1, 0, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 1, 0, 1, 0, 1] 
+true_labels = [0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 0]
+print len(predictions)
+for index, item in enumerate(predictions):
+    if  item == 1 and true_labels[index] == 0:
+        print "y",index, ": ", item,",",true_labels[index]
+
+print "precision score: ", precision_score(true_labels,predictions, average='binary')
+print "recall score: ", recall_score(true_labels,predictions, average='binary')
 
 
 
