@@ -1,0 +1,17 @@
+version: "2"
+
+services:
+    python:
+      container_name: python
+      build: 
+        context: .
+        dockerfile: .docker/python.dockerfile
+      ports:
+        - "3000:3000"
+      volumes:
+        - .:/var/LearningTree/intro
+        - /tmp/.X11-unix:/tmp/.X11-unix
+      working_dir: /var/LearningTree/intro
+      environment:
+        - DISPLAY=$XHOST_IP:0
+ 
