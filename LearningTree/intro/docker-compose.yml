@@ -1,17 +1,34 @@
 version: "2"
 
 services:
-    python:
-      container_name: python
-      build: 
-        context: .
-        dockerfile: .docker/python.dockerfile
-      ports:
-        - "3000:3000"
-      volumes:
-        - .:/var/LearningTree/intro
-        - /tmp/.X11-unix:/tmp/.X11-unix
-      working_dir: /var/LearningTree/intro
-      environment:
-        - DISPLAY=$XHOST_IP:0
- 
+  db:
+    image: postgres
+    privileged: true
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: password
+    volumes:
+      # - ./dbdata:/var/lib/postgresql/data
+      - /data/python:/var/lib/postgresql/data
+    ports:
+      - '5432:5432'
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+  python:
+    depends_on: 
+      - db
+    container_name: python
+    build: 
+      context: .
+      dockerfile: .docker/python.dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/var/LearningTree/intro
+      - /tmp/.X11-unix:/tmp/.X11-unix
+    working_dir: /var/LearningTree/intro
+    environment:
+      - DISPLAY=$XHOST_IP:0
