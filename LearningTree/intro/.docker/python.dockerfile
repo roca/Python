@@ -3,7 +3,9 @@
 FROM python:3.6.4
 
 RUN pip install --upgrade pip
+RUN pip install --upgrade setuptools
 RUN pip install psycopg2
+RUN pip install Flask
 
 RUN rm /usr/bin/python
 RUN ln -s /usr/local/bin/python /usr/bin/python
