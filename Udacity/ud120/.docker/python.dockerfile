@@ -6,6 +6,8 @@ RUN pip install numpy scipy matplotlib ipython jupyter pandas sympy nose
 RUN pip install -U scikit-learn
 RUN pip install nltk
 RUN pip install --upgrade PILLOW
+RUN pip install kaggle --upgrade
+
 RUN rm /usr/bin/python
 RUN ln -s /usr/local/bin/python /usr/bin/python
 # Create a directory inside the container to store all our application and then make it the working directory.
