@@ -11,14 +11,14 @@ def convertArray(array):
     for i in range(rows):
         for j in range(columns):
             if array[i][j] == '':
-                array[i][j] = 0
+                array[i][j] = 0.0
             elif array[i][j] == 'male':
-                array[i][j] = 0
+                array[i][j] = 0.0
             elif array[i][j] == 'female':
-                array[i][j] = 1
+                array[i][j] = 1.0
             else:
                 try:
-                    array[i][j] = int(array[i][j]) 
+                    array[i][j] = float(int(array[i][j]))
                 except:
                     array[i][j] = float(array[i][j])     
     return array
