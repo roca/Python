@@ -1,5 +1,20 @@
 #!/usr/bin/python
 
+# Pclass Passenger Class (1 = 1st; 2 = 2nd; 3 = 3rd)
+# survival Survival (0 = No; 1 = Yes)
+# name Name
+# sex Sex
+# age Age
+# sibsp Number of Siblings/Spouses Aboard
+# parch Number of Parents/Children Aboard
+# ticket Ticket Number
+# fare Passenger Fare (British pound)
+# cabin Cabin
+# embarked Port of Embarkation (C = Cherbourg; Q = Queenstown; S = Southampton)
+# boat Lifeboat
+# body Body Identification Number
+# home.dest Home/Destination
+
 import csv
 import numpy as np
 import sys
@@ -17,7 +32,7 @@ with open('train.csv') as csv_file:
 # PassengerId,Survived,Pclass,Name,Sex,Age,SibSp,Parch,Ticket,Fare,Cabin,Embarked
 # 0,1,2,3,4,5,6,7,8,9,10,11
 
-features = ['Pclass','Sex','Age','SibSp','Parch','Ticket','Fare','Cabin','Embarked']
+features = ['Pclass','Sex','Age','Cabin']
 feature_indices = []
 for feature in features:
     feature_indices.append(columns_headers.index(feature))
