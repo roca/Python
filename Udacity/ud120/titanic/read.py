@@ -2,26 +2,11 @@
 
 import csv
 import numpy as np
+import sys
+sys.path.append("./utils/")
+
 from time import time
-
-
-def convertArray(array):
-    rows = len(array)
-    columns = len(array[0])
-    for i in range(rows):
-        for j in range(columns):
-            if array[i][j] == '':
-                array[i][j] = 0.0
-            elif array[i][j] == 'male':
-                array[i][j] = 0.0
-            elif array[i][j] == 'female':
-                array[i][j] = 1.0
-            else:
-                try:
-                    array[i][j] = float(int(array[i][j]))
-                except:
-                    array[i][j] = float(array[i][j])     
-    return array
+from utils import convertString, convertArray
 
 with open('train.csv') as csv_file:
     csv_reader = csv.reader(csv_file, delimiter=',')
@@ -32,17 +17,17 @@ with open('train.csv') as csv_file:
 # PassengerId,Survived,Pclass,Name,Sex,Age,SibSp,Parch,Ticket,Fare,Cabin,Embarked
 # 0,1,2,3,4,5,6,7,8,9,10,11
 
-features = ['Sex','Age','SibSp','Parch']
+features = ['Pclass','Sex','Age','SibSp','Parch','Ticket','Fare','Cabin','Embarked']
 feature_indices = []
 for feature in features:
     feature_indices.append(columns_headers.index(feature))
 
 feature_data = people[:,feature_indices]
+print feature_data[0]
 
 feature_data =  convertArray(feature_data)
 
 
-print feature_data
 
 labels = ['Survived']
 label_indices = []
@@ -50,10 +35,10 @@ for label in labels:
     label_indices.append(columns_headers.index(label))
 
 label_data = people[:,label_indices]
+print label_data[0]
 
 label_data =  convertArray(label_data)
 
-print label_data
 
 
 from sklearn.model_selection import train_test_split
