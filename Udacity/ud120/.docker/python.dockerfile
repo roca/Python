@@ -7,6 +7,7 @@ RUN pip install -U scikit-learn
 RUN pip install nltk
 RUN pip install --upgrade PILLOW
 RUN pip install kaggle --upgrade
+RUN pip install seaborn
 
 RUN rm /usr/bin/python
 RUN ln -s /usr/local/bin/python /usr/bin/python
