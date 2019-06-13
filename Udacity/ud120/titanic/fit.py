@@ -1,6 +1,7 @@
 #!/usr/bin/python
 
 # From: https://www.kaggle.com/sinakhorami/titanic-best-working-classifier
+# To Colab: https://colab.research.google.com/drive/1KyyXbKL766PKfZqJXFhMJ9bB5AK7Wv9J
 
 import numpy as np
 import pandas as pd
