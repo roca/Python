@@ -1,4 +1,6 @@
-#!/usr/bin/python
+#!/usr/bin/pythonA
+
+# From: https://www.kaggle.com/sinakhorami/titanic-best-working-classifier
 
 import numpy as np
 import pandas as pd
