@@ -38,7 +38,7 @@ for feature in features:
     feature_indices.append(columns_headers.index(feature))
 
 feature_data = people[:,feature_indices]
-print feature_data[0]
+# print feature_data[0]
 
 feature_data =  convertArray(feature_data)
 
@@ -50,7 +50,7 @@ for label in labels:
     label_indices.append(columns_headers.index(label))
 
 label_data = people[:,label_indices]
-print label_data[0]
+# print label_data[0]
 
 label_data =  convertArray(label_data)
 

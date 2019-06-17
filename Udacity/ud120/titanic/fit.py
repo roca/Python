@@ -146,10 +146,10 @@ classifiers = [
     #RandomForestClassifier(),
 	#AdaBoostClassifier(),
     #GradientBoostingClassifier(),
-    #GaussianNB(),
-    #LinearDiscriminantAnalysis(),
-    #QuadraticDiscriminantAnalysis(),
-    #LogisticRegression(),
+    # GaussianNB(),
+    # LinearDiscriminantAnalysis(),
+    # QuadraticDiscriminantAnalysis(),
+    # LogisticRegression(),
 ]
 
 log_cols = ["Classifier", "Accuracy"]
@@ -175,14 +175,17 @@ for train_index, test_index in sss.split(X, y):
 			acc_dict[name] += acc
 		else:
 			acc_dict[name] = acc
-
+        
 for clf in acc_dict:
 	acc_dict[clf] = acc_dict[clf] / 10.0
 	log_entry = pd.DataFrame([[clf, acc_dict[clf]]], columns=log_cols)
 	log = log.append(log_entry)
 
-plt.xlabel('Accuracy')
-plt.title('Classifier Accuracy')
+print (line_break)
+for clf in acc_dict:
+    print clf, "\t\t\t",acc_dict[clf]
+# plt.xlabel('Accuracy')
+# plt.title('Classifier Accuracy')
 
-sns.set_color_codes("muted")
-sns.barplot(x='Accuracy', y='Classifier', data=log, color="b")
+# sns.set_color_codes("muted")
+# sns.barplot(x='Accuracy', y='Classifier', data=log, color="b")
