@@ -140,16 +140,16 @@ from sklearn.discriminant_analysis import LinearDiscriminantAnalysis, QuadraticD
 from sklearn.linear_model import LogisticRegression
 
 classifiers = [
-    #KNeighborsClassifier(3),
-    #SVC(probability=True),
+    KNeighborsClassifier(3),
+    SVC(probability=True),
     DecisionTreeClassifier(),
-    #RandomForestClassifier(),
-	#AdaBoostClassifier(),
-    #GradientBoostingClassifier(),
-    # GaussianNB(),
-    # LinearDiscriminantAnalysis(),
-    # QuadraticDiscriminantAnalysis(),
-    # LogisticRegression(),
+    RandomForestClassifier(),
+	AdaBoostClassifier(),
+    GradientBoostingClassifier(),
+    GaussianNB(),
+    LinearDiscriminantAnalysis(),
+    QuadraticDiscriminantAnalysis(),
+    LogisticRegression(),
 ]
 
 log_cols = ["Classifier", "Accuracy"]
@@ -184,8 +184,10 @@ for clf in acc_dict:
 print (line_break)
 for clf in acc_dict:
     print clf, "\t\t\t",acc_dict[clf]
-# plt.xlabel('Accuracy')
-# plt.title('Classifier Accuracy')
+plt.xlabel('Accuracy')
+plt.title('Classifier Accuracy')
 
-# sns.set_color_codes("muted")
-# sns.barplot(x='Accuracy', y='Classifier', data=log, color="b")
+sns.set_color_codes("muted")
+sns.barplot(x='Accuracy', y='Classifier', data=log, color="b")
+
+plt.show()
