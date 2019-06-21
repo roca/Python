@@ -9,6 +9,9 @@ RUN pip install --upgrade PILLOW
 RUN pip install kaggle --upgrade
 RUN pip install seaborn
 
+COPY ./kaggle.json /root/.kaggle/kaggle.json
+RUN chmod 600 /root/.kaggle/kaggle.json
+
 RUN rm /usr/bin/python
 RUN ln -s /usr/local/bin/python /usr/bin/python
 # Create a directory inside the container to store all our application and then make it the working directory.
