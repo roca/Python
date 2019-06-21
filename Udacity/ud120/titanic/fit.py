@@ -190,4 +190,17 @@ plt.title('Classifier Accuracy')
 sns.set_color_codes("muted")
 sns.barplot(x='Accuracy', y='Classifier', data=log, color="b")
 
+
+
+
+candidate_classifier = KNeighborsClassifier(3)
+candidate_classifier.fit(train[0::, 1::], train[0::, 0])
+result = candidate_classifier.predict(test)
+
+f= open("gender_submission.txt","w+")
+f.write("%s,%s\r\n" % ("PassengerId","Survived"))
+
+for i in range(len(result)):
+    f.write("%d,%d\r\n" % (full_data[1]['PassengerId'][i],result[i]))
+f.close()
 plt.show()
