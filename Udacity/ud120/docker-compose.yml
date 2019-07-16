@@ -14,4 +14,16 @@ services:
       working_dir: /var/Udacity/ud120
       environment:
         - DISPLAY=$XHOST_IP:0
- 
+    anaconda:
+      container_name: anaconda
+      build:
+        context: .
+        dockerfile: .docker/anaconda.dockerfile
+      ports:
+        - "8888:8888"
+      command:  bash -c "/opt/conda/bin/jupyter notebook --notebook-dir=/opt/notebooks --ip='0.0.0.0' --port=8888 --no-browser --allow-root"
+      volumes:
+        - ./notebooks:/opt/notebooks
+      extra_hosts:
+        - "local.regeneron.regn.com:192.168.99.100"
+      working_dir: /opt/notebooks 
