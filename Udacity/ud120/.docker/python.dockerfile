@@ -8,6 +8,7 @@ RUN pip install nltk
 RUN pip install --upgrade PILLOW
 RUN pip install kaggle --upgrade
 RUN pip install seaborn
+RUN pip install biopython
 
 COPY ./kaggle.json /root/.kaggle/kaggle.json
 RUN chmod 600 /root/.kaggle/kaggle.json
