@@ -32,7 +32,7 @@ if __name__ == '__main__':
     import json
     papers = fetch_details(id_list)
     for i, paper in enumerate(papers['PubmedArticle']):
-        print("%d) %s" % (i+1, paper['MedlineCitation']['Article']['Abstract']['AbstractText']))
+        print("Abastract-%d) %s" % (i+1, paper['MedlineCitation']['Article']['Abstract']['AbstractText']))
     # Pretty print the first paper in full
     #import json
     #print(json.dumps(papers[0], indent=2, separators=(',', ':')))
