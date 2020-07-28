@@ -6,6 +6,13 @@ RUN pip install numpy scipy matplotlib ipython jupyter pandas sympy nose
 RUN pip install -U scikit-learn
 RUN pip install nltk
 RUN pip install --upgrade PILLOW
+RUN pip install kaggle --upgrade
+RUN pip install seaborn
+RUN pip install biopython
+
+COPY ./kaggle.json /root/.kaggle/kaggle.json
+RUN chmod 600 /root/.kaggle/kaggle.json
+
 RUN rm /usr/bin/python
 RUN ln -s /usr/local/bin/python /usr/bin/python
 # Create a directory inside the container to store all our application and then make it the working directory.
