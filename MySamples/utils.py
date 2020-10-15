@@ -29,3 +29,18 @@ def equilibrium(a):
             return f'index: {i} ,element: {e}'
     return -1
 
+def factorial(x):
+    """This is a recursive function
+    to find the factorial of an integer"""
+
+    if x == 1:
+        return 1
+    else:
+        return (x * factorial(x-1))
+
+def recur_fibo(n):
+    if n <= 1:
+       return n
+    else:
+       return(recur_fibo(n-1) + recur_fibo(n-2))
+
