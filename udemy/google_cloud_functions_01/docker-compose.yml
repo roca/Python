@@ -1,0 +1,20 @@
+version: "2.4"
+
+services:
+    python:
+      container_name: python
+      build: 
+        context: .
+        dockerfile: ./Dockerfile
+      ports:
+        - "3000:3000"
+      command: 
+        - /bin/bash 
+        - -c 
+        - |
+          tail -f /dev/null
+      environment:
+        PATH: /var/project/bin:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+      volumes:
+        - .:/var/project
+      working_dir: /var/project
