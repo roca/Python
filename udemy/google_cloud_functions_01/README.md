@@ -11,4 +11,7 @@ or
 
 
 ## Deploy a function GCP
-    gcloud functions deploy hello_world --runtime python37 --trigger-http
+    - gcloud auth login
+    - gcloud config set project [YOUR_PROJECT_ID]
+    - gcloud functions deploy hello_world --runtime python37 --trigger-http
+    - [HelloWorld link](https://us-central1-cloud-functionss-course.cloudfunctions.net/hello_world)
