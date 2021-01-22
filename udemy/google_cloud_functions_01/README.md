@@ -9,6 +9,8 @@ or
 
 ### This is the repo for the [course here](https://github.com/DavidArmendariz/google-cloud-functions-course)
 
-
+## Run local
+    - functions-framework --target hello_world --debug --port 3000
+    
 ## Deploy a function GCP
     gcloud functions deploy hello_world --runtime python37 --trigger-http
