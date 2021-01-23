@@ -11,9 +11,10 @@ or
 
 ## Run local
     - functions-framework --target hello_world --debug --port 3000
-    
+
 ## Deploy a function GCP
     - gcloud auth login
     - gcloud config set project [YOUR_PROJECT_ID]
     - gcloud functions deploy hello_world --runtime python37 --trigger-http
+    - gcloud functions deploy hello_world --env-vars-file .env.yaml --runtime python37 --trigger-http
     - [HelloWorld link](https://us-central1-cloud-functionss-course.cloudfunctions.net/hello_world)
