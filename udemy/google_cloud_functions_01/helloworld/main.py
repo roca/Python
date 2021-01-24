@@ -19,10 +19,20 @@ def get_bearer_token(request):
     return bearer_token
 
 def hello_world(request):
+    if request.method == 'OPTIONS':
+        headers = {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'POST',
+            'Access-Control-Allow-Headers': 'Content-Type, Authorization'
+        }
+        return '', 204, headers 
 
     if request.method != 'POST':
         abort(405)
 
+    headers = {
+        'Access-Control-Allow-Origin': '*'
+    }
     bearer_token = get_bearer_token(request)
     secret_key = os.environ.get('ACCESS_TOKEN')
     if bearer_token != secret_key:
@@ -39,4 +49,4 @@ def hello_world(request):
     else:
         name = 'World'
         lastname = ''
-    return f'Hello {name} {lastname}'
+    return f'Hello {name} {lastname}', 200, headers
