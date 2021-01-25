@@ -18,3 +18,5 @@ services:
       volumes:
         - .:/var/project
       working_dir: /var/project
+      env_file:
+        ./secrets/.env
